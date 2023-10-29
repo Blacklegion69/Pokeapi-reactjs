@@ -13,6 +13,16 @@ const Pagination = ({ id }: propsType) => {
     return numbers;
   };
 
+  const validation = (value: string): string => {
+    if (value.length === 1) {
+      return `00${value}`;
+    } else if (value.length === 2) {
+      return `0${value}`;
+    } else {
+      return `${value}`;
+    }
+  };
+
   const Boxes = () => {
     const links = totalPages().map((d, id) => {
       return (
@@ -21,7 +31,7 @@ const Pagination = ({ id }: propsType) => {
           key={id}
           to={`/pokemons/${d}`}
         >
-          {d}
+          {validation(d.toString())}
         </Link>
       );
     });

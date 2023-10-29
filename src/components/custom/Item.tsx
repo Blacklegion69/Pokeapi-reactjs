@@ -8,22 +8,22 @@ type propsType = {
   id: number;
   data: {
     name: string;
-    url?: string;
+    url: string;
   };
 };
 
 const Item = ({ serial, id, data }: propsType) => {
   return (
-    <div className="w-[350px] border-2 border-slate-300 hover:shadow-md my-1 flex p-2 rounded bg-slate-200">
+    <div className="w-[350px] md:w-[400px] border-2 border-slate-300 hover:shadow-md my-1 flex p-2 rounded bg-slate-200">
       <div className="w-full flex justify-center items-center relative">
         <Image
-          className="w-[150px] h-[150px] rounded border-2 border-slate-900"
+          className="w-[150px] h-[150px] md:w-[250px] md:h-[250px] rounded border-2 border-slate-900"
           src={"https://img.pokemondb.net/artwork/" + data.name + ".jpg"}
         />
       </div>
 
       <div className="w-full flex text-sm justify-around flex-col">
-        <div className="bg-slate-300 px-2 rounded w-full text-3xl z-30 border-2 flex items-center">
+        <div className="bg-slate-300 px-2 rounded w-full text-3xl z-30 border-2 flex md:flex-col">
           <div className="mr-2">ID :</div>
           <Textgradient className="blackopone bg-gradient-to-l from-gray-900 to-gray-600 bg-gradient-to-r uppercase underline underline-offset-8">
             {Number(id) * 10 - 10 + Number(serial) + 1}
@@ -38,7 +38,7 @@ const Item = ({ serial, id, data }: propsType) => {
           </div>
         </div>
 
-        <Link to="/">
+        <Link to={data ? data.url : "#"}>
           <Button className="shadow-md">
             <Textgradient className="font-bold bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-indigo-200 via-red-200 to-yellow-100">
               More Info
